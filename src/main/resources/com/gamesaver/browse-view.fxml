@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="293.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamesaver.GameSaverController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+   <children>
+      <AnchorPane prefHeight="58.0" prefWidth="398.0">
+         <children>
+            <Button fx:id="SearchButton" layoutX="476.0" layoutY="11.0" mnemonicParsing="false" text="Search" AnchorPane.rightAnchor="13.600000000000023" />
+            <TextField fx:id="SearchingTextField" layoutX="257.0" layoutY="10.0" prefHeight="26.0" prefWidth="208.0" promptText="What are you looking for?" AnchorPane.rightAnchor="76.60000000000002" />
+            <Label layoutX="14.0" layoutY="13.0" prefHeight="22.0" prefWidth="107.0" text="Game Saver" AnchorPane.leftAnchor="14.0">
+               <font>
+                  <Font name="JetBrains Mono SemiBold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView prefHeight="234.0" prefWidth="398.0">
+        <columns>
+          <TableColumn editable="false" prefWidth="75.0" text="Store" />
+          <TableColumn editable="false" prefWidth="75.0" text="Savings" />
+            <TableColumn editable="false" prefWidth="75.0" text="Price" />
+            <TableColumn editable="false" prefWidth="315.1999908447266" text="Title" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>
