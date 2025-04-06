@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="293.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamesaver.GameSaverController">
+<VBox alignment="CENTER" prefHeight="365.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamesaver.controller.GameSaverController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
    <children>
-      <AnchorPane prefHeight="58.0" prefWidth="398.0">
+      <AnchorPane prefHeight="47.0" prefWidth="560.0">
          <children>
-            <Button fx:id="SearchButton" layoutX="476.0" layoutY="11.0" mnemonicParsing="false" text="Search" AnchorPane.rightAnchor="13.600000000000023" />
-            <TextField fx:id="SearchingTextField" layoutX="257.0" layoutY="10.0" prefHeight="26.0" prefWidth="208.0" promptText="What are you looking for?" AnchorPane.rightAnchor="76.60000000000002" />
+            <Button fx:id="searchButton" layoutX="476.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" text="Search" AnchorPane.rightAnchor="13.600000000000023" />
+            <TextField fx:id="searchTextField" layoutX="257.0" layoutY="10.0" prefHeight="26.0" prefWidth="208.0" promptText="What are you looking for?" AnchorPane.rightAnchor="76.60000000000002" />
             <Label layoutX="14.0" layoutY="13.0" prefHeight="22.0" prefWidth="107.0" text="Game Saver" AnchorPane.leftAnchor="14.0">
                <font>
                   <Font name="JetBrains Mono SemiBold" size="16.0" />
@@ -21,13 +21,33 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView prefHeight="234.0" prefWidth="398.0">
-        <columns>
-          <TableColumn editable="false" prefWidth="75.0" text="Store" />
-          <TableColumn editable="false" prefWidth="75.0" text="Savings" />
-            <TableColumn editable="false" prefWidth="75.0" text="Price" />
-            <TableColumn editable="false" prefWidth="315.1999908447266" text="Title" />
-        </columns>
-      </TableView>
+      <HBox alignment="TOP_CENTER" prefHeight="221.0" prefWidth="560.0">
+         <children>
+            <TableView fx:id="dealsTable" prefHeight="249.0" prefWidth="474.0">
+              <columns>
+                <TableColumn editable="false" prefWidth="75.0" text="Store" />
+                <TableColumn editable="false" prefWidth="75.0" text="Savings" />
+                  <TableColumn editable="false" prefWidth="75.0" text="Price" />
+                  <TableColumn editable="false" prefWidth="248.2000274658203" text="Title" />
+              </columns>
+            </TableView>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="addToWishlistButton" alignment="CENTER" mnemonicParsing="false" prefHeight="47.0" prefWidth="76.0" text="Add to Wishlist" textAlignment="CENTER" wrapText="true">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="showWishlistButton" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="76.0" text="Show Wishlist" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
    </children>
 </VBox>
