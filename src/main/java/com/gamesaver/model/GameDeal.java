@@ -1,42 +1,36 @@
 package com.gamesaver.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GameDeal {
-    private String store;
+    @JsonProperty("storeID")
+    private String storeId;
+
+    @JsonProperty("savings")
     private String savings;
+
+    @JsonProperty("salePrice")
     private String price;
+
+    @JsonProperty("title")
     private String title;
 
-    public GameDeal(String store, String savings, String price, String title) {
-        this.store = store;
-        this.savings = savings;
-        this.price = price;
-        this.title = title;
-    }
+    public GameDeal() {}
 
-    public String getStore() {
-        return store;
-    }
-    public String getSavings() {
-        return savings;
-    }
-    public String getPrice() {
-        return price;
-    }
-    public String getTitle() {
-        return title;
-    }
+    public String getStoreId() { return storeId; }
+    public void setStoreId(String storeId) { this.storeId = storeId; }
 
-    public void setStore(String store) {
-        this.store = store;
-    }
-    public void setSavings(String savings) {
-        this.savings = savings;
-    }
-    public void setPrice(String price) {
-        this.price = price;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public String getSavings() { return savings; }
+    public void setSavings(String savings) { this.savings = savings; }
+
+    public String getPrice() { return price; }
+    public void setPrice(String price) { this.price = price; }
+
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
 }
