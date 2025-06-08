@@ -25,15 +25,15 @@
          <children>
             <TableView fx:id="dealsTable" prefHeight="249.0" prefWidth="474.0">
               <columns>
-                <TableColumn fx:id="storeColumn" editable="false" prefWidth="75.0" text="Store" />
-                <TableColumn fx:id="savingsColumn" editable="false" prefWidth="75.0" text="Savings" />
-                  <TableColumn fx:id="priceColumn" editable="false" prefWidth="75.0" text="Price" />
-                  <TableColumn fx:id="titleColumn" editable="false" prefWidth="248.2000274658203" text="Title" />
+                <TableColumn fx:id="storeColumn" editable="false" prefWidth="45.0" text="Store" style="-fx-alignment: CENTER;"/>
+                <TableColumn fx:id="savingsColumn" editable="false" prefWidth="60.0" text="Savings" style="-fx-alignment: CENTER;" />
+                  <TableColumn fx:id="priceColumn" editable="false" prefWidth="70.0" text="Price" style="-fx-alignment: CENTER;" />
+                  <TableColumn fx:id="titleColumn" editable="false" prefWidth="300.8000183105469" text="Title" style="-fx-alignment: CENTER-LEFT;" />
               </columns>
             </TableView>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="addToWishlistButton" alignment="CENTER" mnemonicParsing="false" prefHeight="47.0" prefWidth="76.0" text="Add to Wishlist" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="addToWishlistButton" alignment="CENTER" mnemonicParsing="false" onAction="#onAddToWishlist" prefHeight="47.0" prefWidth="76.0" text="Add to Wishlist" textAlignment="CENTER" wrapText="true">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -41,7 +41,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="showWishlistButton" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="76.0" text="Show Wishlist" textAlignment="CENTER" wrapText="true" />
+                   <Button fx:id="showWishlistButton" alignment="CENTER" mnemonicParsing="false" onAction="#onShowWishlist" prefHeight="47.0" prefWidth="76.0" text="Show Wishlist" textAlignment="CENTER" wrapText="true" />
                </children>
             </VBox>
          </children>

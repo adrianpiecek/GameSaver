@@ -6,6 +6,7 @@ module com.gamesaver {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.core;
     requires java.desktop;
+    requires com.google.common;
 
 
     opens com.gamesaver to javafx.fxml;

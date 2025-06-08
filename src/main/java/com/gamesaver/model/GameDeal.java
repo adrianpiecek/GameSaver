@@ -19,7 +19,17 @@ public class GameDeal {
     @JsonProperty("title")
     private String title;
 
+    @JsonProperty("dealID")
+    private String dealID;
+
     public GameDeal() {}
+    public GameDeal(String title, String storeId, String savings, String price, String dealID) {
+        this.title = title;
+        this.storeId = storeId;
+        this.savings = savings;
+        this.price = price;
+        this.dealID = dealID;
+    }
 
     public String getStoreId() { return storeId; }
     public void setStoreId(String storeId) { this.storeId = storeId; }
@@ -32,5 +42,8 @@ public class GameDeal {
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
+
+    public String getDealID() { return dealID;  }
+    public void setDealID(String dealID) { this.dealID = dealID; }
 
 }
