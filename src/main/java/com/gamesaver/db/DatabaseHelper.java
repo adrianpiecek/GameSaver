@@ -58,6 +58,16 @@ public class DatabaseHelper {
         }
     }
 
+    public void deleteDealById(String dealId) {
+            String sql = "DELETE FROM wishlist WHERE deal_id = ?";
+            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                pstmt.setString(1, dealId);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
     public void close() {
         if (connection != null) {
             try {
