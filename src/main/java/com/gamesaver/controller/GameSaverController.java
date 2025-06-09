@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import com.gamesaver.model.GameDeal;
 import com.gamesaver.service.CheapSharkService;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,6 +20,8 @@ import okhttp3.Request;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import com.google.common.eventbus.Subscribe;
 
 public class GameSaverController {
@@ -86,25 +89,39 @@ public class GameSaverController {
                 }
             }
         });
-
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         dealsTable.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2){
                 GameDeal selectedDeal = dealsTable.getSelectionModel().getSelectedItem();
                 if (selectedDeal != null){
-                    GlobalEventBus.getInstance().post(new GameDealDoubleClickEvent(selectedDeal));
+                        GlobalEventBus.getInstance().post(new GameDealDoubleClickEvent(selectedDeal, showingWishlist));
                 }
             }
         });
-
+        dealsTable.setRowFactory(tv -> {
+            TableRow<GameDeal> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getButton() == MouseButton.SECONDARY && !row.isEmpty() && showingWishlist) {
+                    onRemoveFromWishlist();
+                }
+            });
+            return row;
+        });
     }
 
     @Subscribe
     public void onGameDealDoubleClick(GameDealDoubleClickEvent event) {
-        GameDeal deal = event.getDeal();
-        String url = "https://www.cheapshark.com/redirect?dealID=" + deal.getDealID();
-        openWebPage(url);
+        if (event.isFromWishlist()) {
+            String title = event.getDeal().getTitle();
+            showingWishlist = false;
+            showWishlistButton.setText("Show Wishlist");
+            searchTextField.setText(title);
+            SearchWithSorting(title);
+        } else {
+            String url = "https://www.cheapshark.com/redirect?dealID=" + event.getDeal().getDealID();
+            openWebPage(url);
+        }
     }
 
     @FXML
@@ -127,6 +144,53 @@ public class GameSaverController {
             dealsTable.getItems().setAll(currentDeals);
             showingWishlist = false;
             showWishlistButton.setText("Show Wishlist");
+            searchButton.setDisable(false);
+        });
+
+        searchTask.setOnFailed(event -> {
+            showAlert("Error", "Failed to fetch game deals: " + searchTask.getException().getMessage());
+            searchButton.setDisable(false);
+        });
+
+        new Thread(searchTask).start();
+    }
+
+    private void SearchWithSorting(String title) {
+        searchButton.setDisable(true);
+
+        Task<List<GameDeal>> searchTask = new Task<>() {
+            @Override
+            protected List<GameDeal> call() throws Exception {
+                List<GameDeal> results = cheapSharkService.searchDeals(title);
+
+                // tylko dokładne dopasowania
+                String trimmedTitle = title.trim().toLowerCase();
+                List<GameDeal> exactMatches = results.stream()
+                        .filter(deal -> deal.getTitle() != null
+                                && deal.getTitle().trim().toLowerCase().equals(trimmedTitle))
+                        .collect(Collectors.toList());
+
+                // Sortowanie po cenie rosnąco
+                exactMatches.sort((d1, d2) -> {
+                    try {
+                        double price1 = Double.parseDouble(d1.getPrice());
+                        double price2 = Double.parseDouble(d2.getPrice());
+                        return Double.compare(price1, price2);
+                    } catch (NumberFormatException e) {
+                        return 0;
+                    }
+                });
+
+                return exactMatches;
+            }
+        };
+
+        searchTask.setOnSucceeded(event -> {
+            List<GameDeal> results = searchTask.getValue();
+            currentDeals.setAll(results);
+            dealsTable.getItems().setAll(currentDeals);
+            showWishlistButton.setText("Show Wishlist");
+            showingWishlist = false;
             searchButton.setDisable(false);
         });
 
@@ -194,6 +258,21 @@ public class GameSaverController {
         showAlert("Success", "Game added to wishlist!");
     }
 
+    @FXML
+    private void onRemoveFromWishlist() {
+        GameDeal selected = dealsTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            showAlert("No Selection", "Please select a game from the table.");
+            return;
+        }
+
+        databaseService.deleteDealById(selected.getDealID());
+        wishlistDeals.remove(selected);
+        dealsTable.getItems().remove(selected);
+
+        showAlert("Success", "Game removed from wishlist!");
+    }
+
     private void openWebPage(String url){
         try {
             java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
@@ -203,7 +282,7 @@ public class GameSaverController {
     }
 
     private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
