@@ -61,5 +61,8 @@ public class DatabaseService {
         );
     }
 
-    // TODO: usuwanie z wishlisty, wyszukiwanie, itd.
+    public void deleteDealById(String dealID) {
+        dbHelper.deleteDealById(dealID);
+    }
+
 }
