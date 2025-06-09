@@ -15,7 +15,7 @@ public class CheapSharkService {
     public List<GameDeal> searchDeals(String gameTitle) throws IOException {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(API_URL).newBuilder();
         urlBuilder.addQueryParameter("title", gameTitle);
-        urlBuilder.addQueryParameter("pageSize", "20");  // np. max 20 wyników
+        urlBuilder.addQueryParameter("pageSize", "100");  // max 100 wyników
 
         Request request = new Request.Builder()
                 .url(urlBuilder.build())
