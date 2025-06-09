@@ -1,0 +1,109 @@
+.root {
+    -fx-font-family: "JetBrains Mono", "Segoe UI", sans-serif;
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #ffffff;
+}
+
+/* === Label === */
+.label {
+    -fx-text-fill: white;
+}
+
+/* === TextField === */
+.text-field {
+    -fx-background-color: #2e2e2e;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #999;
+    -fx-background-insets: 0;
+    -fx-background-radius: 6px;
+    -fx-border-color: #444;
+    -fx-border-radius: 6px;
+}
+
+/* === Button === */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #444, #222);
+    -fx-text-fill: white;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #555;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #555, #333);
+}
+
+.button:pressed {
+    -fx-background-color: #111;
+}
+
+/* === TableView and Columns === */
+.table-view {
+    -fx-background-color: #1e1e1e;
+    -fx-table-cell-border-color: #3c3c3c;
+    -fx-control-inner-background: #1e1e1e;
+    -fx-text-fill: white;
+    -fx-border-color: #444;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #2d2d30;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-size: 28px;
+    -fx-border-color: transparent transparent #3c3c3c transparent;
+    -fx-background-color: #2d2d30;
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell {
+    -fx-background-color: #1e1e1e;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #007acc;
+    -fx-text-fill: white;
+}
+
+/* === VBox, HBox, AnchorPane === */
+.hbox, .vbox, .anchor-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: #2e2e2e;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #555;
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #777;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #1e1e1e;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+

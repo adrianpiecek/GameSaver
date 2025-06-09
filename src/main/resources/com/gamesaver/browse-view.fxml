@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="365.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamesaver.controller.GameSaverController">
+<VBox alignment="CENTER" prefHeight="504.0" prefWidth="760.0" spacing="20.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamesaver.controller.GameSaverController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
    <children>
-      <AnchorPane prefHeight="47.0" prefWidth="560.0">
+      <AnchorPane prefHeight="47.0" prefWidth="560.0" stylesheets="@css/style.css" xmlns:fx="http://javafx.com/fxml">
          <children>
             <Button fx:id="searchButton" layoutX="476.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" text="Search" AnchorPane.rightAnchor="13.600000000000023" />
             <TextField fx:id="searchTextField" layoutX="257.0" layoutY="10.0" prefHeight="26.0" prefWidth="208.0" promptText="What are you looking for?" AnchorPane.rightAnchor="76.60000000000002" />
@@ -21,14 +21,14 @@
             </Label>
          </children>
       </AnchorPane>
-      <HBox alignment="TOP_CENTER" prefHeight="221.0" prefWidth="560.0">
+      <HBox alignment="TOP_CENTER" prefHeight="399.0" prefWidth="720.0">
          <children>
-            <TableView fx:id="dealsTable" prefHeight="249.0" prefWidth="474.0">
+            <TableView fx:id="dealsTable" prefHeight="398.0" prefWidth="614.0">
               <columns>
-                <TableColumn fx:id="storeColumn" editable="false" prefWidth="45.0" text="Store" style="-fx-alignment: CENTER;"/>
-                <TableColumn fx:id="savingsColumn" editable="false" prefWidth="60.0" text="Savings" style="-fx-alignment: CENTER;" />
-                  <TableColumn fx:id="priceColumn" editable="false" prefWidth="70.0" text="Price" style="-fx-alignment: CENTER;" />
-                  <TableColumn fx:id="titleColumn" editable="false" prefWidth="300.8000183105469" text="Title" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn fx:id="storeColumn" editable="false" prefWidth="45.0" style="-fx-alignment: CENTER;" text="Store" />
+                <TableColumn fx:id="savingsColumn" editable="false" prefWidth="60.0" style="-fx-alignment: CENTER;" text="Savings" />
+                  <TableColumn fx:id="priceColumn" editable="false" prefWidth="70.0" style="-fx-alignment: CENTER;" text="Price" />
+                  <TableColumn fx:id="titleColumn" editable="false" prefWidth="300.8000183105469" style="-fx-alignment: CENTER-LEFT;" text="Title" />
               </columns>
             </TableView>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
