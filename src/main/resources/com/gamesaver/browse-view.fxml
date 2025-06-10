@@ -2,8 +2,8 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" prefHeight="504.0" prefWidth="651.0" spacing="20.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamesaver.controller.GameSaverController">
   <padding>
@@ -12,13 +12,9 @@
    <children>
       <AnchorPane prefHeight="47.0" prefWidth="560.0" stylesheets="@css/style.css" xmlns:fx="http://javafx.com/fxml">
          <children>
-            <Button fx:id="searchButton" layoutX="555.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" text="Search" AnchorPane.rightAnchor="14.600000000000023" />
-            <TextField fx:id="searchTextField" layoutX="323.0" layoutY="11.0" prefHeight="26.0" prefWidth="208.0" promptText="What are you looking for?" AnchorPane.rightAnchor="100.20000000000005" />
-            <Label layoutX="14.0" layoutY="13.0" prefHeight="22.0" prefWidth="107.0" text="Game Saver" AnchorPane.leftAnchor="14.0">
-               <font>
-                  <Font name="JetBrains Mono SemiBold" size="16.0" />
-               </font>
-            </Label>
+            <Button fx:id="searchButton" layoutX="535.0" layoutY="24.0" mnemonicParsing="false" onAction="#onSearch" text="Search" AnchorPane.rightAnchor="14.600000000000023" />
+            <TextField fx:id="searchTextField" layoutX="306.0" layoutY="24.0" prefHeight="26.0" prefWidth="208.0" promptText="What are you looking for?" AnchorPane.rightAnchor="97.20000000000005" />
+            <ImageView fx:id="logoImageView" fitHeight="78.0" fitWidth="214.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true"/>
          </children>
       </AnchorPane>
       <HBox alignment="TOP_CENTER" prefHeight="399.0" prefWidth="839.0">

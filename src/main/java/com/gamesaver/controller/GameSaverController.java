@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 import com.google.common.eventbus.Subscribe;
 
 public class GameSaverController {
+    @FXML private ImageView logoImageView;
     @FXML private TextField searchTextField;
     @FXML private Button searchButton;
     @FXML private Button showWishlistButton;
@@ -45,6 +46,7 @@ public class GameSaverController {
 
     @FXML
     public void initialize() {
+        logoImageView.setImage(new javafx.scene.image.Image("https://www.cheapshark.com/img/logo.png"));
         cheapSharkService = new CheapSharkService();
         GlobalEventBus.getInstance().register(this);
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));

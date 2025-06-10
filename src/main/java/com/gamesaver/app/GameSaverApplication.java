@@ -14,6 +14,7 @@ public class GameSaverApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(false);
         stage.setTitle("Game Saver");
+        stage.getIcons().add(new javafx.scene.image.Image(GameSaverApplication.class.getResourceAsStream("/com/gamesaver/images/icon.png")));
         stage.setScene(scene);
         stage.sizeToScene();
         stage.show();
